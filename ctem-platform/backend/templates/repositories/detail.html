@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="page-header">
+
+    <div>
+        <h1>{{ repository.name }}</h1>
+        <p>
+            Repository configuration, scan management and security assessment.
+        </p>
+    </div>
+
+</div>
+
+<div class="card">
+
+    <h2>Repository Information</h2>
+
+    <table class="table">
+
+        <tr>
+            <th>Project</th>
+            <td>{{ repository.project.name }}</td>
+        </tr>
+
+        <tr>
+            <th>Repository Name</th>
+            <td>{{ repository.name }}</td>
+        </tr>
+
+        <tr>
+            <th>Git URL</th>
+            <td>{{ repository.git_url }}</td>
+        </tr>
+
+        <tr>
+            <th>Default Branch</th>
+            <td>{{ repository.default_branch }}</td>
+        </tr>
+
+        <tr>
+            <th>Status</th>
+            <td>
+                {% if repository.is_active %}
+                    Active
+                {% else %}
+                    Disabled
+                {% endif %}
+            </td>
+        </tr>
+
+        <tr>
+            <th>Created</th>
+            <td>{{ repository.created_at }}</td>
+        </tr>
+
+    </table>
+
+</div>
+
+<div class="card">
+
+    <h2>Repository Management</h2>
+
+    <div style="display:flex;gap:12px;flex-wrap:wrap;">
+
+        <a
+            href="{% url 'repositories:edit' repository.id %}"
+            class="btn-primary"
+        >
+            Edit Repository
+        </a>
+
+        <a
+            href="{% url 'repositories:delete' repository.id %}"
+            class="btn-danger"
+        >
+            Delete Repository
+        </a>
+
+    </div>
+
+</div>
+
+<div class="card">
+
+    <h2>Security Scans</h2>
+
+    <p>
+        Launch security assessments against this repository.
+    </p>
+
+    <div style="display:flex;gap:12px;flex-wrap:wrap;">
+
+        <button class="btn-primary">
+            Run Semgrep
+        </button>
+
+        <button class="btn-primary">
+            Run Gitleaks
+        </button>
+
+        <button class="btn-primary">
+            Run Trivy
+        </button>
+
+        <button class="btn-primary">
+            Run Dependency Check
+        </button>
+
+    </div>
+
+</div>
+
+<div class="card">
+
+    <h2>Recent Scan Activity</h2>
+
+    <p>
+        No scan history available yet.
+    </p>
+
+</div>
+
+{% endblock %}

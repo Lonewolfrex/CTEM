@@ -2,7 +2,18 @@
 
 {% block content %}
 
-<h1>Repositories</h1>
+<div class="page-header">
+
+    <div>
+        <h1>Repositories</h1>
+        <p>Manage Git repositories integrated with CTEM.</p>
+    </div>
+
+    <a href="{% url 'repositories:create' %}" class="btn-primary">
+        + Add Repository
+    </a>
+
+</div>
 
 <div class="card">
 
@@ -10,24 +21,50 @@
 
 <thead>
 <tr>
+    <th>Project</th>
     <th>Name</th>
     <th>Git URL</th>
     <th>Branch</th>
+    <th>Status</th>
+    <th>Actions</th>
 </tr>
 </thead>
 
 <tbody>
 
 {% for repo in repositories %}
+
 <tr>
-    <td>{{ repo.name }}</td>
-    <td>{{ repo.git_url }}</td>
-    <td>{{ repo.default_branch }}</td>
+
+<td>{{ repo.project.name }}</td>
+<td>{{ repo.name }}</td>
+<td>{{ repo.git_url }}</td>
+<td>{{ repo.default_branch }}</td>
+
+<td>
+{% if repo.is_active %}
+Active
+{% else %}
+Inactive
+{% endif %}
+</td>
+
+<td>
+<a href="{% url 'repositories:detail' repo.id %}">
+View
+</a>
+</td>
+
 </tr>
+
 {% empty %}
+
 <tr>
-    <td colspan="3">No Repositories</td>
+<td colspan="6">
+No repositories configured
+</td>
 </tr>
+
 {% endfor %}
 
 </tbody>

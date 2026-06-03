@@ -1,16 +1,33 @@
 from django.db import models
 from projects.models import Project
 
+
 class Repository(models.Model):
-    name = models.CharField(max_length=255)
-    git_url = models.URLField(blank=True, null=True)
-    branch = models.CharField(max_length=100, default="main")
 
-    project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name="repositories")
+    project = models.ForeignKey(
+        Project,
+        on_delete=models.CASCADE,
+        related_name="repositories"
+    )
 
-    is_active = models.BooleanField(default=True)
+    name = models.CharField(
+        max_length=255
+    )
 
-    created_at = models.DateTimeField(auto_now_add=True)
+    git_url = models.URLField()
+
+    default_branch = models.CharField(
+        max_length=100,
+        default="main"
+    )
+
+    is_active = models.BooleanField(
+        default=True
+    )
+
+    created_at = models.DateTimeField(
+        auto_now_add=True
+    )
 
     def __str__(self):
         return self.name

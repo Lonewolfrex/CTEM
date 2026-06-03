@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="page-header">
+
+    <div>
+        <h1>Add Repository</h1>
+        <p>Register a GitHub repository for CTEM scanning.</p>
+    </div>
+
+</div>
+
+<div class="form-card">
+
+<form method="post">
+
+{% csrf_token %}
+
+<div class="form-grid">
+
+    <div class="form-group">
+        <label>Project</label>
+        {{ form.project }}
+    </div>
+
+    <div class="form-group">
+        <label>Repository Name</label>
+        {{ form.name }}
+    </div>
+
+    <div class="form-group full-width">
+        <label>Git URL</label>
+        {{ form.git_url }}
+    </div>
+
+    <div class="form-group">
+        <label>Default Branch</label>
+        {{ form.default_branch }}
+    </div>
+
+    <div class="form-group">
+        <label>Active</label>
+        {{ form.is_active }}
+    </div>
+
+</div>
+
+<br>
+
+<button type="submit" class="btn-primary">
+    Save Repository
+</button>
+
+</form>
+
+</div>
+
+{% endblock %}
