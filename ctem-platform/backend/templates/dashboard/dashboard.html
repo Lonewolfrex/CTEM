@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2 class="section-title">Dashboard</h2>
+
+<div class="row g-4">
+
+    <div class="col-md-3">
+        <div class="card-ctem">
+            <div class="metric-value">{{ critical }}</div>
+            <div class="metric-label">Critical Findings</div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card-ctem">
+            <div class="metric-value">{{ high }}</div>
+            <div class="metric-label">High Findings</div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card-ctem">
+            <div class="metric-value">{{ projects }}</div>
+            <div class="metric-label">Projects</div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card-ctem">
+            <div class="metric-value">{{ assets }}</div>
+            <div class="metric-label">Assets</div>
+        </div>
+    </div>
+
+</div>
+
+<div class="row mt-4">
+
+    <div class="col-lg-6">
+
+        <div class="card-ctem">
+
+            <h5>Findings by Severity</h5>
+
+            <canvas id="severityChart"></canvas>
+
+        </div>
+
+    </div>
+
+    <div class="col-lg-6">
+
+        <div class="card-ctem">
+
+            <h5>Risk Trend</h5>
+
+            <canvas id="riskChart"></canvas>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+new Chart(
+document.getElementById('severityChart'),
+{
+type:'bar',
+data:{
+labels:['Critical','High','Medium','Low'],
+datasets:[{
+data:[23,81,112,94]
+}]
+}
+}
+);
+
+new Chart(
+document.getElementById('riskChart'),
+{
+type:'line',
+data:{
+labels:['Mon','Tue','Wed','Thu','Fri'],
+datasets:[{
+data:[62,66,70,78,81]
+}]
+}
+}
+);
+
+</script>
+
+{% endblock %}

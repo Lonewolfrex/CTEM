@@ -1,0 +1,37 @@
+version: "3.8"
+
+services:
+
+  ctem-db:
+    image: postgres:16
+    container_name: ctem_postgres
+    restart: always
+    environment:
+      POSTGRES_DB: ctem
+      POSTGRES_USER: ctemuser
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5433:5432"
+    volumes:
+      - ctem_pgdata:/var/lib/postgresql/data
+
+  ctem-redis:
+    image: redis:7
+    container_name: ctem_redis
+    ports:
+      - "6380:6379"
+
+  ctem-web:
+    build: .
+    container_name: ctem_django
+    command: python manage.py runserver 0.0.0.0:8001
+    volumes:
+      - .:/app
+    ports:
+      - "8001:8001"
+    depends_on:
+      - ctem-db
+      - ctem-redis
+
+volumes:
+  ctem_pgdata:

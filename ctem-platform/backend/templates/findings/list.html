@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="page-header">
+    <h1>Findings</h1>
+    <p>Security findings collected from all scanners.</p>
+</div>
+
+<div class="card">
+
+    {% if findings %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Severity</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for finding in findings %}
+                <tr>
+                    <td>{{ finding.title }}</td>
+                    <td>{{ finding.severity }}</td>
+                    <td>{{ finding.status }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+
+        </table>
+    {% else %}
+        <p>No findings available.</p>
+    {% endif %}
+
+</div>
+
+{% endblock %}

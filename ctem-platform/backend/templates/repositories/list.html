@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Repositories</h1>
+
+<div class="card">
+
+<table class="table">
+
+<thead>
+<tr>
+    <th>Name</th>
+    <th>Git URL</th>
+    <th>Branch</th>
+</tr>
+</thead>
+
+<tbody>
+
+{% for repo in repositories %}
+<tr>
+    <td>{{ repo.name }}</td>
+    <td>{{ repo.git_url }}</td>
+    <td>{{ repo.default_branch }}</td>
+</tr>
+{% empty %}
+<tr>
+    <td colspan="3">No Repositories</td>
+</tr>
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+{% endblock %}

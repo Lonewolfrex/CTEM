@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="page-header">
+    <h1>Scans</h1>
+    <p>Manage and monitor security scans.</p>
+</div>
+
+<div class="card">
+    <h3>Scan Jobs</h3>
+
+    {% if scans %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Tool</th>
+                    <th>Status</th>
+                    <th>Created</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for scan in scans %}
+                <tr>
+                    <td>{{ scan.name }}</td>
+                    <td>{{ scan.tool }}</td>
+                    <td>{{ scan.status }}</td>
+                    <td>{{ scan.created_at }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No scans executed yet.</p>
+    {% endif %}
+</div>
+
+{% endblock %}

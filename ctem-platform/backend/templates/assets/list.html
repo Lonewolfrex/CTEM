@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="page-header">
+    <h1>Assets</h1>
+    <p>Manage discovered assets for CTEM projects.</p>
+</div>
+
+<div class="card">
+    <h3>Asset Inventory</h3>
+
+    {% if assets %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Target</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for asset in assets %}
+                <tr>
+                    <td>{{ asset.name }}</td>
+                    <td>{{ asset.asset_type }}</td>
+                    <td>{{ asset.value }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No assets discovered yet.</p>
+    {% endif %}
+</div>
+
+{% endblock %}

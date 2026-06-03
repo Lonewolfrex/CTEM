@@ -1,0 +1,97 @@
+:root{
+    --bg:#0f172a;
+    --sidebar:#111827;
+    --topbar:#1e293b;
+    --card:#1e293b;
+    --border:#334155;
+    --text:#f8fafc;
+    --muted:#94a3b8;
+    --primary:#2563eb;
+    --success:#10b981;
+    --warning:#f59e0b;
+    --danger:#dc2626;
+}
+
+body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:Segoe UI,Arial,sans-serif;
+}
+
+.wrapper{
+    display:flex;
+    min-height:100vh;
+}
+
+.sidebar{
+    width:260px;
+    background:var(--sidebar);
+    border-right:1px solid var(--border);
+}
+
+.sidebar-header{
+    padding:20px;
+    font-size:22px;
+    font-weight:700;
+    border-bottom:1px solid var(--border);
+}
+
+.sidebar a{
+    color:var(--muted);
+    text-decoration:none;
+    display:block;
+    padding:12px 20px;
+}
+
+.sidebar a:hover{
+    background:#1f2937;
+    color:#fff;
+}
+
+.main-content{
+    flex:1;
+}
+
+.topbar{
+    height:70px;
+    background:var(--topbar);
+    border-bottom:1px solid var(--border);
+    display:flex;
+    align-items:center;
+    padding:0 25px;
+}
+
+.page-content{
+    padding:25px;
+}
+
+.card-ctem{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:20px;
+}
+
+.metric-value{
+    font-size:30px;
+    font-weight:700;
+}
+
+.metric-label{
+    color:var(--muted);
+}
+
+.table-dark-custom{
+    background:var(--card);
+    color:var(--text);
+}
+
+.table-dark-custom th{
+    background:#172033;
+}
+
+.section-title{
+    margin-bottom:20px;
+    font-size:24px;
+    font-weight:600;
+}
