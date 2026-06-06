@@ -33,4 +33,16 @@ urlpatterns = [
         views.repository_delete,
         name="delete"
     ),
+
+    path(
+        "<int:pk>/run-gitleaks/",
+        views.run_gitleaks,
+        name="run_gitleaks"
+    ),
+    
+    path(
+        "<int:pk>/run-semgrep/",
+        views.run_semgrep,
+        name="run_semgrep"
+    ),   
 ]

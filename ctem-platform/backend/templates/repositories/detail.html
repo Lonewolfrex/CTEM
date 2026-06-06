@@ -91,15 +91,21 @@
         Launch security assessments against this repository.
     </p>
 
-    <div style="display:flex;gap:12px;flex-wrap:wrap;">
+    <div class="action-bar">
 
-        <button class="btn-primary">
-            Run Semgrep
-        </button>
-
-        <button class="btn-primary">
+        <a
+            href="{% url 'repositories:run_gitleaks' repository.id %}"
+            class="btn-primary"
+        >
             Run Gitleaks
-        </button>
+        </a>
+
+        <a
+            href="{% url 'repositories:run_semgrep' repository.id %}"
+            class="btn-primary"
+        >
+            Run Semgrep
+        </a>
 
         <button class="btn-primary">
             Run Trivy
@@ -115,11 +121,39 @@
 
 <div class="card">
 
-    <h2>Recent Scan Activity</h2>
+    <h2>Latest Scan Result</h2>
 
-    <p>
-        No scan history available yet.
-    </p>
+    {% if latest_scan %}
+
+        <table class="table">
+
+            <tr>
+                <th>Tool</th>
+                <td>{{ latest_scan.tool }}</td>
+            </tr>
+
+            <tr>
+                <th>Status</th>
+                <td>{{ latest_scan.status }}</td>
+            </tr>
+
+            <tr>
+                <th>Result</th>
+                <td>{{ latest_scan.result_summary }}</td>
+            </tr>
+
+            <tr>
+                <th>Executed</th>
+                <td>{{ latest_scan.created_at }}</td>
+            </tr>
+
+        </table>
+
+    {% else %}
+
+        <p>No scans executed yet.</p>
+
+    {% endif %}
 
 </div>
 

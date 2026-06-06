@@ -1,0 +1,45 @@
+rules:
+
+  - id: hardcoded-password
+    languages:
+      - python
+      - javascript
+    severity: ERROR
+    message: Hardcoded password detected
+    pattern-regex: "(password|passwd|pwd)\\s*=\\s*['\\\"][^'\\\"]+['\\\"]"
+
+  - id: hardcoded-api-key
+    languages:
+      - python
+      - javascript
+    severity: ERROR
+    message: Hardcoded API key detected
+    pattern-regex: "(api_key|apikey|token)\\s*=\\s*['\\\"][^'\\\"]+['\\\"]"
+
+  - id: dangerous-subprocess
+    languages:
+      - python
+    severity: WARNING
+    message: Potential command injection via subprocess
+    pattern: subprocess.run(...)
+
+  - id: dangerous-os-system
+    languages:
+      - python
+    severity: ERROR
+    message: os.system usage detected
+    pattern: os.system(...)
+
+  - id: flask-debug
+    languages:
+      - python
+    severity: WARNING
+    message: Flask debug mode enabled
+    pattern: app.run(debug=True)
+
+  - id: django-debug
+    languages:
+      - python
+    severity: WARNING
+    message: Django DEBUG=True detected
+    pattern-regex: "DEBUG\\s*=\\s*True"

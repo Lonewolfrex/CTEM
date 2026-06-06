@@ -6,7 +6,7 @@ from .models import ScanJob
 from .serializers import ScanJobSerializer
 
 from repositories.models import Repository
-
+from django.shortcuts import get_object_or_404
 
 def scan_list(request):
 
@@ -20,6 +20,23 @@ def scan_list(request):
         }
     )
 
+def scan_detail(request, pk):
+
+    scan = get_object_or_404(
+        ScanJob,
+        pk=pk
+    )
+
+    findings = scan.findings.all()
+
+    return render(
+        request,
+        "scans/detail.html",
+        {
+            "scan": scan,
+            "findings": findings
+        }
+    )
 
 class TriggerScanView(APIView):
 

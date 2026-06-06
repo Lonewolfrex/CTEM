@@ -1,6 +1,6 @@
 from django.db import models
-from django.utils import timezone
 from repositories.models import Repository
+from django.utils import timezone
 
 
 class ScanJob(models.Model):
@@ -12,12 +12,27 @@ class ScanJob(models.Model):
         ("FAILED", "Failed"),
     ]
 
-    name = models.CharField(max_length=255, blank=True, null=True)
+    TOOL_CHOICES = [
+        ("GITLEAKS", "Gitleaks"),
+        ("SEMGREP", "Semgrep"),
+        ("TRIVY", "Trivy"),
+        ("DEPENDENCY_CHECK", "Dependency Check"),
+    ]
 
     repository = models.ForeignKey(
         Repository,
         on_delete=models.CASCADE,
         related_name="scans"
+    )
+
+    name = models.CharField(
+        max_length=255,
+        default="Scan Job"
+    )
+
+    tool = models.CharField(
+        max_length=50,
+        choices=TOOL_CHOICES
     )
 
     status = models.CharField(
@@ -26,9 +41,9 @@ class ScanJob(models.Model):
         default="QUEUED"
     )
 
-    tool = models.CharField(max_length=100)
-
-    created_at = models.DateTimeField(default=timezone.now)
+    created_at = models.DateTimeField(
+        default=timezone.now
+    )
 
     started_at = models.DateTimeField(
         null=True,
@@ -40,10 +55,20 @@ class ScanJob(models.Model):
         blank=True
     )
 
+    output_file = models.TextField(
+        blank=True,
+        null=True
+    )
+
     log = models.TextField(
         blank=True,
         null=True
     )
 
+    result_summary = models.TextField(
+        blank=True,
+        null=True
+    )
+    
     def __str__(self):
-        return f"{self.name} - {self.status}"
+        return f"{self.repository.name} - {self.tool}"

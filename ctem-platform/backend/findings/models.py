@@ -1,38 +1,79 @@
 from django.db import models
-from repositories.models import Repository
 from scans.models import ScanJob
+from repositories.models import Repository
 
 class Finding(models.Model):
 
-    SEVERITY=[
-        ("CRITICAL","CRITICAL"),
-        ("HIGH","HIGH"),
-        ("MEDIUM","MEDIUM"),
-        ("LOW","LOW"),
-        ("INFO","INFO")
+    SEVERITY_CHOICES = [
+        ("Critical", "Critical"),
+        ("High", "High"),
+        ("Medium", "Medium"),
+        ("Low", "Low"),
+        ("Info", "Info"),
     ]
 
-    STATUS=[
-        ("OPEN","OPEN"),
-        ("IN_PROGRESS","IN_PROGRESS"),
-        ("RESOLVED","RESOLVED"),
-        ("ACCEPTED","ACCEPTED")
+    STATUS_CHOICES = [
+        ("OPEN", "Open"),
+        ("FIXED", "Fixed"),
+        ("ACCEPTED", "Accepted"),
     ]
 
-    repository=models.ForeignKey(Repository,on_delete=models.CASCADE)
-    scan=models.ForeignKey(ScanJob,on_delete=models.CASCADE,related_name="findings")
+    repository = models.ForeignKey(
+        Repository,
+        on_delete=models.CASCADE,
+        related_name="findings",
+        null=True,
+        blank=True
+    )
 
-    tool=models.CharField(max_length=100)
-    title=models.CharField(max_length=500)
-    description=models.TextField()
+    tool = models.CharField(
+        max_length=100,
+        null=True,
+        blank=True
+    )
 
-    severity=models.CharField(max_length=20,choices=SEVERITY)
-    status=models.CharField(max_length=20,choices=STATUS,default="OPEN")
+    scan_job = models.ForeignKey(
+        ScanJob,
+        on_delete=models.CASCADE,
+        related_name="findings",
+        null=True,
+        blank=True
+    )
 
-    file_path=models.CharField(max_length=500,null=True,blank=True)
-    line_number=models.IntegerField(null=True,blank=True)
+    title = models.CharField(
+        max_length=500
+    )
 
-    created_at=models.DateTimeField(auto_now_add=True)
+    severity = models.CharField(
+        max_length=20,
+        choices=SEVERITY_CHOICES,
+        default="Low"
+    )
+
+    file_path = models.TextField(
+        blank=True,
+        null=True
+    )
+
+    line_number = models.IntegerField(
+        blank=True,
+        null=True
+    )
+
+    description = models.TextField(
+        blank=True,
+        null=True
+    )
+
+    status = models.CharField(
+        max_length=20,
+        choices=STATUS_CHOICES,
+        default="OPEN"
+    )
+
+    created_at = models.DateTimeField(
+        auto_now_add=True
+    )
 
     def __str__(self):
         return self.title

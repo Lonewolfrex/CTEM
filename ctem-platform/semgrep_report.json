@@ -1,0 +1,319 @@
+{
+  "version": "1.165.0",
+  "results": [
+    {
+      "check_id": "backend.config.semgrep.django-debug",
+      "path": "backend/config/settings/dev.py",
+      "start": {
+        "line": 26,
+        "col": 1,
+        "offset": 802
+      },
+      "end": {
+        "line": 26,
+        "col": 13,
+        "offset": 814
+      },
+      "extra": {
+        "message": "Django DEBUG=True detected",
+        "metadata": {},
+        "severity": "WARNING",
+        "fingerprint": "requires login",
+        "lines": "requires login",
+        "validation_state": "NO_VALIDATOR",
+        "engine_kind": "OSS"
+      }
+    },
+    {
+      "check_id": "backend.config.semgrep.django-debug",
+      "path": "backend/config/settings/prod.py",
+      "start": {
+        "line": 26,
+        "col": 1,
+        "offset": 803
+      },
+      "end": {
+        "line": 26,
+        "col": 13,
+        "offset": 815
+      },
+      "extra": {
+        "message": "Django DEBUG=True detected",
+        "metadata": {},
+        "severity": "WARNING",
+        "fingerprint": "requires login",
+        "lines": "requires login",
+        "validation_state": "NO_VALIDATOR",
+        "engine_kind": "OSS"
+      }
+    },
+    {
+      "check_id": "backend.config.semgrep.dangerous-subprocess",
+      "path": "backend/scans/services/gitleaks_service.py",
+      "start": {
+        "line": 17,
+        "col": 9,
+        "offset": 212
+      },
+      "end": {
+        "line": 25,
+        "col": 10,
+        "offset": 393
+      },
+      "extra": {
+        "message": "Potential command injection via subprocess",
+        "metadata": {},
+        "severity": "WARNING",
+        "fingerprint": "requires login",
+        "lines": "requires login",
+        "validation_state": "NO_VALIDATOR",
+        "engine_kind": "OSS"
+      }
+    },
+    {
+      "check_id": "backend.config.semgrep.dangerous-subprocess",
+      "path": "backend/scans/services/gitleaks_service.py",
+      "start": {
+        "line": 29,
+        "col": 9,
+        "offset": 458
+      },
+      "end": {
+        "line": 41,
+        "col": 10,
+        "offset": 773
+      },
+      "extra": {
+        "message": "Potential command injection via subprocess",
+        "metadata": {},
+        "severity": "WARNING",
+        "fingerprint": "requires login",
+        "lines": "requires login",
+        "validation_state": "NO_VALIDATOR",
+        "engine_kind": "OSS"
+      }
+    },
+    {
+      "check_id": "backend.config.semgrep.dangerous-subprocess",
+      "path": "backend/scans/services/semgrep_service.py",
+      "start": {
+        "line": 24,
+        "col": 9,
+        "offset": 341
+      },
+      "end": {
+        "line": 35,
+        "col": 10,
+        "offset": 625
+      },
+      "extra": {
+        "message": "Potential command injection via subprocess",
+        "metadata": {},
+        "severity": "WARNING",
+        "fingerprint": "requires login",
+        "lines": "requires login",
+        "validation_state": "NO_VALIDATOR",
+        "engine_kind": "OSS"
+      }
+    },
+    {
+      "check_id": "backend.config.semgrep.dangerous-subprocess",
+      "path": "backend/scans/services/semgrep_service.py",
+      "start": {
+        "line": 39,
+        "col": 9,
+        "offset": 689
+      },
+      "end": {
+        "line": 50,
+        "col": 10,
+        "offset": 945
+      },
+      "extra": {
+        "message": "Potential command injection via subprocess",
+        "metadata": {},
+        "severity": "WARNING",
+        "fingerprint": "requires login",
+        "lines": "requires login",
+        "validation_state": "NO_VALIDATOR",
+        "engine_kind": "OSS"
+      }
+    }
+  ],
+  "errors": [],
+  "paths": {
+    "scanned": [
+      "backend/assets/__init__.py",
+      "backend/assets/admin.py",
+      "backend/assets/apps.py",
+      "backend/assets/migrations/0001_initial.py",
+      "backend/assets/migrations/__init__.py",
+      "backend/assets/models.py",
+      "backend/assets/tests.py",
+      "backend/assets/urls.py",
+      "backend/assets/views.py",
+      "backend/config/__init__.py",
+      "backend/config/asgi.py",
+      "backend/config/settings/__init__.py",
+      "backend/config/settings/base.py",
+      "backend/config/settings/dev.py",
+      "backend/config/settings/prod.py",
+      "backend/config/urls.py",
+      "backend/config/wsgi.py",
+      "backend/core/__init__.py",
+      "backend/core/admin.py",
+      "backend/core/apps.py",
+      "backend/core/migrations/__init__.py",
+      "backend/core/models.py",
+      "backend/core/tests.py",
+      "backend/core/views.py",
+      "backend/dashboard/__init__.py",
+      "backend/dashboard/admin.py",
+      "backend/dashboard/apps.py",
+      "backend/dashboard/migrations/__init__.py",
+      "backend/dashboard/models.py",
+      "backend/dashboard/tests.py",
+      "backend/dashboard/urls.py",
+      "backend/dashboard/views.py",
+      "backend/findings/__init__.py",
+      "backend/findings/admin.py",
+      "backend/findings/apps.py",
+      "backend/findings/migrations/0001_initial.py",
+      "backend/findings/migrations/0002_rename_scan_finding_scan_job_and_more.py",
+      "backend/findings/migrations/__init__.py",
+      "backend/findings/models.py",
+      "backend/findings/tests.py",
+      "backend/findings/urls.py",
+      "backend/findings/views.py",
+      "backend/integrations/__init__.py",
+      "backend/integrations/admin.py",
+      "backend/integrations/apps.py",
+      "backend/integrations/migrations/__init__.py",
+      "backend/integrations/models.py",
+      "backend/integrations/tests.py",
+      "backend/integrations/urls.py",
+      "backend/integrations/views.py",
+      "backend/manage.py",
+      "backend/projects/__init__.py",
+      "backend/projects/admin.py",
+      "backend/projects/apps.py",
+      "backend/projects/migrations/0001_initial.py",
+      "backend/projects/migrations/0002_project_criticality_project_owner_project_updated_at_and_more.py",
+      "backend/projects/migrations/__init__.py",
+      "backend/projects/models.py",
+      "backend/projects/tests.py",
+      "backend/projects/urls.py",
+      "backend/projects/views.py",
+      "backend/reports/__init__.py",
+      "backend/reports/admin.py",
+      "backend/reports/apps.py",
+      "backend/reports/migrations/__init__.py",
+      "backend/reports/models.py",
+      "backend/reports/tests.py",
+      "backend/reports/urls.py",
+      "backend/reports/views.py",
+      "backend/repositories/__init__.py",
+      "backend/repositories/admin.py",
+      "backend/repositories/apps.py",
+      "backend/repositories/forms.py",
+      "backend/repositories/migrations/0001_initial.py",
+      "backend/repositories/migrations/0002_rename_active_repository_is_active_and_more.py",
+      "backend/repositories/migrations/0003_rename_branch_repository_default_branch_and_more.py",
+      "backend/repositories/migrations/__init__.py",
+      "backend/repositories/models.py",
+      "backend/repositories/serializers.py",
+      "backend/repositories/tests.py",
+      "backend/repositories/urls.py",
+      "backend/repositories/views.py",
+      "backend/scans/__init__.py",
+      "backend/scans/admin.py",
+      "backend/scans/apps.py",
+      "backend/scans/migrations/0001_initial.py",
+      "backend/scans/migrations/0002_scanjob_created_at_scanjob_log_scanjob_name_and_more.py",
+      "backend/scans/migrations/0003_scanjob_output_file_alter_scanjob_name_and_more.py",
+      "backend/scans/migrations/0004_scanjob_result_summary.py",
+      "backend/scans/migrations/__init__.py",
+      "backend/scans/models.py",
+      "backend/scans/serializers.py",
+      "backend/scans/services/__init__.py",
+      "backend/scans/services/gitleaks_service.py",
+      "backend/scans/services/semgrep_service.py",
+      "backend/scans/tests.py",
+      "backend/scans/urls.py",
+      "backend/scans/views.py"
+    ]
+  },
+  "time": {
+    "rules": [],
+    "rules_parse_time": 0.0009849071502685547,
+    "profiling_times": {
+      "config_time": 0.12048649787902832,
+      "core_time": 0.4025435447692871,
+      "ignores_time": 0.00006461143493652344,
+      "total_time": 0.5270400047302246
+    },
+    "parsing_time": {
+      "total_time": 0,
+      "per_file_time": {
+        "mean": 0,
+        "std_dev": 0
+      },
+      "very_slow_stats": {
+        "time_ratio": 0,
+        "count_ratio": 0
+      },
+      "very_slow_files": []
+    },
+    "scanning_time": {
+      "total_time": 0.08822393417358398,
+      "per_file_time": {
+        "mean": 0.0009002442262610613,
+        "std_dev": 0.000013934695130846953
+      },
+      "very_slow_stats": {
+        "time_ratio": 0,
+        "count_ratio": 0
+      },
+      "very_slow_files": []
+    },
+    "matching_time": {
+      "total_time": 0,
+      "per_file_and_rule_time": {
+        "mean": 0,
+        "std_dev": 0
+      },
+      "very_slow_stats": {
+        "time_ratio": 0,
+        "count_ratio": 0
+      },
+      "very_slow_rules_on_files": []
+    },
+    "tainting_time": {
+      "total_time": 0,
+      "per_def_and_rule_time": {
+        "mean": 0,
+        "std_dev": 0
+      },
+      "very_slow_stats": {
+        "time_ratio": 0,
+        "count_ratio": 0
+      },
+      "very_slow_rules_on_defs": []
+    },
+    "fixpoint_timeouts": [],
+    "prefiltering": {
+      "project_level_time": 0,
+      "file_level_time": 0,
+      "rules_with_project_prefilters_ratio": 0,
+      "rules_with_file_prefilters_ratio": 1,
+      "rules_selected_ratio": 0.01020408163265306,
+      "rules_matched_ratio": 0.01020408163265306
+    },
+    "targets": [],
+    "total_bytes": 0,
+    "max_memory_bytes": 151887808
+  },
+  "engine_requested": "OSS",
+  "skipped_rules": [],
+  "profiling_results": []
+}
