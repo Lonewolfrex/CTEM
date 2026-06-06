@@ -55,14 +55,59 @@ def repository_detail(request, pk):
         Repository,
         pk=pk
     )
-    latest_scan = repository.scans.order_by("-created_at").first()
+
+    latest_scan = (
+        repository.scans
+        .order_by("-created_at")
+        .first()
+    )
+
+    recent_scans = (
+        repository.scans
+        .order_by("-created_at")[:10]
+    )
+
+    recent_findings = (
+        repository.findings
+        .order_by("-created_at")[:20]
+    )
+
+    critical = repository.findings.filter(
+        severity="Critical"
+    ).count()
+
+    high = repository.findings.filter(
+        severity="High"
+    ).count()
+
+    medium = repository.findings.filter(
+        severity="Medium"
+    ).count()
+
+    low = repository.findings.filter(
+        severity="Low"
+    ).count()
+
+    risk_score = (
+        critical * 10
+        + high * 7
+        + medium * 4
+        + low * 1
+    )
 
     return render(
         request,
         "repositories/detail.html",
         {
             "repository": repository,
-            "latest_scan": latest_scan
+            "latest_scan": latest_scan,
+            "recent_scans": recent_scans,
+            "recent_findings": recent_findings,
+            "critical_count": critical,
+            "high_count": high,
+            "medium_count": medium,
+            "low_count": low,
+            "risk_score": risk_score,
         }
     )
 

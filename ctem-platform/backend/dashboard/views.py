@@ -14,7 +14,8 @@ def dashboard(request):
         "asset_count": Asset.objects.count(),
         "finding_count": Finding.objects.count(),
         "scan_count": ScanJob.objects.count(),
+        "critical_count":Finding.objects.filter(severity="Critical").count()
     }
 
 
-    return render(request,"dashboard/dashboard.html",context)
+    return render(request,"dashboard/index.html",context)

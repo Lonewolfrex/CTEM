@@ -169,11 +169,21 @@ body{
     cursor:pointer;
 }
 
-.page-header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:24px;
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.page-title {
+    font-size: 36px;
+    font-weight: 600;
+    color: white;
+}
+
+.page-subtitle {
+    color: #94a3b8;
 }
 
 .table{
@@ -194,12 +204,18 @@ body{
     border-bottom:1px solid #334155;
 }
 
-.card{
+.ctem-card {
     background:#1e293b;
+    color:#ffffff;
     padding:24px;
     margin-bottom:24px;
     border-radius:12px;
+    border:1px solid #334155;
     box-shadow:0 4px 12px rgba(0,0,0,.25);
+}
+
+.ctem-card * {
+    color: #ffffff;
 }
 
 .action-bar{
@@ -212,4 +228,102 @@ body{
 .action-bar .btn-primary{
     min-width:180px;
     text-align:center;
+}
+
+.ctem-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.ctem-table th {
+    background: #172033;
+    color: #94a3b8;
+    padding: 14px;
+    text-align: left;
+}
+
+.ctem-table td {
+    padding: 14px;
+    color: #ffffff;
+    border-top: 1px solid #334155;
+}
+
+.ctem-table tr:hover {
+    background: #243244;
+}
+
+.badge-success {
+    background: #065f46;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+}
+
+.badge-danger {
+    background: #7f1d1d;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+}
+
+.badge-warning {
+    background: #92400e;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+}
+
+.badge-info {
+    background: #1e40af;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+}
+
+.severity-critical {
+    color: #ef4444;
+    font-weight: 700;
+}
+
+.severity-high {
+    color: #f97316;
+    font-weight: 700;
+}
+
+.severity-medium {
+    color: #facc15;
+    font-weight: 700;
+}
+
+.severity-low {
+    color: #22c55e;
+    font-weight: 700;
+}
+
+.severity-info {
+    color: #60a5fa;
+    font-weight: 700;
+}
+
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 20px;
+}
+
+.metric-card {
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.metric-number {
+    font-size: 32px;
+    font-weight: bold;
+    color: white;
+}
+
+.metric-title {
+    color: #94a3b8;
 }

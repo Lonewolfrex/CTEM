@@ -5,19 +5,68 @@
 <div class="page-header">
 
     <div>
+
         <h1>{{ repository.name }}</h1>
+
         <p>
             Repository configuration, scan management and security assessment.
         </p>
+
     </div>
 
 </div>
 
-<div class="card">
+
+<div class="dashboard-grid">
+
+    <div class="ctem-card">
+
+        <h3>Risk Score</h3>
+
+        <h1>{{ risk_score }}</h1>
+
+    </div>
+
+    <div class="ctem-card">
+
+        <h3>Critical</h3>
+
+        <h1>{{ critical_count }}</h1>
+
+    </div>
+
+    <div class="ctem-card">
+
+        <h3>High</h3>
+
+        <h1>{{ high_count }}</h1>
+
+    </div>
+
+    <div class="ctem-card">
+
+        <h3>Medium</h3>
+
+        <h1>{{ medium_count }}</h1>
+
+    </div>
+
+    <div class="ctem-card">
+
+        <h3>Low</h3>
+
+        <h1>{{ low_count }}</h1>
+
+    </div>
+
+</div>
+
+
+<div class="ctem-card">
 
     <h2>Repository Information</h2>
 
-    <table class="table">
+    <table class="ctem-table">
 
         <tr>
             <th>Project</th>
@@ -50,20 +99,16 @@
             </td>
         </tr>
 
-        <tr>
-            <th>Created</th>
-            <td>{{ repository.created_at }}</td>
-        </tr>
-
     </table>
 
 </div>
 
-<div class="card">
+
+<div class="ctem-card">
 
     <h2>Repository Management</h2>
 
-    <div style="display:flex;gap:12px;flex-wrap:wrap;">
+    <div class="action-bar">
 
         <a
             href="{% url 'repositories:edit' repository.id %}"
@@ -83,13 +128,10 @@
 
 </div>
 
-<div class="card">
+
+<div class="ctem-card">
 
     <h2>Security Scans</h2>
-
-    <p>
-        Launch security assessments against this repository.
-    </p>
 
     <div class="action-bar">
 
@@ -111,49 +153,151 @@
             Run Trivy
         </button>
 
-        <button class="btn-primary">
-            Run Dependency Check
-        </button>
-
     </div>
 
 </div>
 
-<div class="card">
+
+<div class="ctem-card">
 
     <h2>Latest Scan Result</h2>
 
     {% if latest_scan %}
 
-        <table class="table">
+    <table class="ctem-table">
 
-            <tr>
-                <th>Tool</th>
-                <td>{{ latest_scan.tool }}</td>
-            </tr>
+        <tr>
+            <th>Tool</th>
+            <td>{{ latest_scan.tool }}</td>
+        </tr>
 
-            <tr>
-                <th>Status</th>
-                <td>{{ latest_scan.status }}</td>
-            </tr>
+        <tr>
+            <th>Status</th>
+            <td>{{ latest_scan.status }}</td>
+        </tr>
 
-            <tr>
-                <th>Result</th>
-                <td>{{ latest_scan.result_summary }}</td>
-            </tr>
+        <tr>
+            <th>Summary</th>
+            <td>{{ latest_scan.result_summary }}</td>
+        </tr>
 
-            <tr>
-                <th>Executed</th>
-                <td>{{ latest_scan.created_at }}</td>
-            </tr>
+        <tr>
+            <th>Executed</th>
+            <td>{{ latest_scan.created_at }}</td>
+        </tr>
 
-        </table>
+    </table>
 
     {% else %}
 
         <p>No scans executed yet.</p>
 
     {% endif %}
+
+</div>
+
+
+<div class="ctem-card">
+
+    <h2>Recent Findings</h2>
+
+    <table class="ctem-table">
+
+        <thead>
+
+            <tr>
+
+                <th>Severity</th>
+                <th>Tool</th>
+                <th>Title</th>
+                <th>Status</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+        {% for finding in recent_findings %}
+
+            <tr>
+
+                <td>{{ finding.severity }}</td>
+
+                <td>{{ finding.tool }}</td>
+
+                <td>{{ finding.title }}</td>
+
+                <td>{{ finding.status }}</td>
+
+            </tr>
+
+        {% empty %}
+
+            <tr>
+
+                <td colspan="4">
+                    No findings available.
+                </td>
+
+            </tr>
+
+        {% endfor %}
+
+        </tbody>
+
+    </table>
+
+</div>
+
+
+<div class="ctem-card">
+
+    <h2>Recent Scans</h2>
+
+    <table class="ctem-table">
+
+        <thead>
+
+            <tr>
+
+                <th>Tool</th>
+                <th>Status</th>
+                <th>Executed</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+        {% for scan in recent_scans %}
+
+            <tr>
+
+                <td>{{ scan.tool }}</td>
+
+                <td>{{ scan.status }}</td>
+
+                <td>{{ scan.created_at }}</td>
+
+            </tr>
+
+        {% empty %}
+
+            <tr>
+
+                <td colspan="3">
+                    No scan history available.
+                </td>
+
+            </tr>
+
+        {% endfor %}
+
+        </tbody>
+
+    </table>
 
 </div>
 

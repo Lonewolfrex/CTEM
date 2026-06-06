@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Finding Details</h1>
+
+<div class="ctem-card">
+
+    <p>
+        <strong>Title:</strong>
+        {{ finding.title }}
+    </p>
+
+    <p>
+        <strong>Repository:</strong>
+        {{ finding.repository.name }}
+    </p>
+
+    <p>
+        <strong>Tool:</strong>
+        {{ finding.tool }}
+    </p>
+
+    <p>
+        <strong>Severity:</strong>
+        {{ finding.severity }}
+    </p>
+
+    <p>
+        <strong>Status:</strong>
+        {{ finding.status }}
+    </p>
+
+    <p>
+        <strong>File:</strong>
+        {{ finding.file_path }}
+    </p>
+
+    <p>
+        <strong>Line:</strong>
+        {{ finding.line_number }}
+    </p>
+
+    <p>
+        <strong>Description:</strong>
+        {{ finding.description }}
+    </p>
+
+</div>
+
+{% endblock %}

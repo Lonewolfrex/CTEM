@@ -2,61 +2,23 @@
 
 {% block content %}
 
-<h1>{{ scan.name }}</h1>
+<h1>Scan Details</h1>
 
-<div class="card">
+<div class="ctem-card">
 
-    <p>
-        <strong>Status:</strong>
-        {{ scan.status }}
-    </p>
+    <p><strong>Repository:</strong> {{ scan.repository.name }}</p>
 
-    <p>
-        <strong>Tool:</strong>
-        {{ scan.tool }}
-    </p>
+    <p><strong>Tool:</strong> {{ scan.tool }}</p>
 
-</div>
+    <p><strong>Status:</strong> {{ scan.status }}</p>
 
-<div class="card">
+    <p><strong>Created:</strong> {{ scan.created_at }}</p>
 
-    <h2>Findings</h2>
+    <p><strong>Started:</strong> {{ scan.started_at }}</p>
 
-    <table class="table">
+    <p><strong>Completed:</strong> {{ scan.completed_at }}</p>
 
-        <thead>
-            <tr>
-                <th>Severity</th>
-                <th>Title</th>
-                <th>File</th>
-                <th>Line</th>
-            </tr>
-        </thead>
-
-        <tbody>
-
-        {% for finding in findings %}
-
-            <tr>
-                <td>{{ finding.severity }}</td>
-                <td>{{ finding.title }}</td>
-                <td>{{ finding.file_path }}</td>
-                <td>{{ finding.line_number }}</td>
-            </tr>
-
-        {% empty %}
-
-            <tr>
-                <td colspan="4">
-                    No findings detected
-                </td>
-            </tr>
-
-        {% endfor %}
-
-        </tbody>
-
-    </table>
+    <p><strong>Result:</strong> {{ scan.result_summary }}</p>
 
 </div>
 

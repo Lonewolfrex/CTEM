@@ -7,10 +7,10 @@
     <p>Security findings collected from all scanners.</p>
 </div>
 
-<div class="card">
+<div class="ctem-card">
 
     {% if findings %}
-        <table class="table">
+        <table class="ctem-table">
             <thead>
                 <tr>
                     <th>Title</th>
@@ -20,13 +20,25 @@
             </thead>
 
             <tbody>
-                {% for finding in findings %}
-                <tr>
-                    <td>{{ finding.title }}</td>
-                    <td>{{ finding.severity }}</td>
-                    <td>{{ finding.status }}</td>
-                </tr>
-                {% endfor %}
+
+            {% for finding in findings %}
+
+            <tr>
+
+                <td>
+                    <a href="{% url 'findings:detail' finding.id %}">
+                        {{ finding.title }}
+                    </a>
+                </td>
+
+                <td>{{ finding.severity }}</td>
+
+                <td>{{ finding.status }}</td>
+
+            </tr>
+
+            {% endfor %}
+
             </tbody>
 
         </table>

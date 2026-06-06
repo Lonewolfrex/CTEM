@@ -6,5 +6,5 @@ app_name = "scans"
 urlpatterns = [
     path("", views.scan_list, name="list"),
     path("run/", views.TriggerScanView.as_view(), name="run"),
-    path("<int:pk>/",views.scan_detail,name="detail"),
+    path("<int:pk>/",views.scan_detail,name="scan_detail"),
 ]
